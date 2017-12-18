@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
 
 namespace HelloWorldDeserialization
 {
@@ -6,7 +8,15 @@ namespace HelloWorldDeserialization
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            using (FileStream fs = new FileStream("d:\\serialized.dat", FileMode.Open))
+            {
+                BinaryFormatter formatter = new BinaryFormatter();
+                Object myDeserializeObject = formatter.Deserialize(fs);
+                Message myDeserializedMessage = (Message)myDeserializeObject;
+                System.Console.WriteLine("Deserialized Message: " + myDeserializedMessage.message);
+            }
+            System.Console.WriteLine("Waiting for your input to continue");
+            System.Console.ReadLine();
         }
     }
 }
