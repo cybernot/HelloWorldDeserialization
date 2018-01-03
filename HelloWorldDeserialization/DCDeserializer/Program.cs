@@ -12,14 +12,18 @@ namespace DCDeserializer
     {
         static void Main(string[] args)
         {
-            using (FileStream fs = new FileStream("d:\\serialized.dat", FileMode.Open))
+            using (FileStream fs = new FileStream("c:\\temp\\serialized.dat", FileMode.Open))
             {
                 StreamReader reader = new StreamReader(fs);
                 
                 List<object> myList = new List<object>();
                 DataContractSerializer serializer = new DataContractSerializer(myList.GetType());
                 myList = (List<object>)serializer.ReadObject(fs);
+                foreach (var item in myList)
+                    Console.WriteLine("Item: " + item.ToString());
             }
+        System.Console.WriteLine("Waiting for your input to continue");
+        System.Console.ReadLine();
         }
     }
 }

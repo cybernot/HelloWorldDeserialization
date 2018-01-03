@@ -8,9 +8,10 @@ namespace HelloWorldDeserialization
     {
         static void Main(string[] args)
         {
-            using (FileStream fs = new FileStream("d:\\serialized.dat", FileMode.Open))
+            using (FileStream fs = new FileStream("c:\\temp\\serialized.dat", FileMode.Open))
             {
                 BinaryFormatter formatter = new BinaryFormatter();
+
                 Object myDeserializeObject = formatter.Deserialize(fs);
                 Message myDeserializedMessage = (Message)myDeserializeObject;
                 System.Console.WriteLine("Deserialized Message: " + myDeserializedMessage.message);
